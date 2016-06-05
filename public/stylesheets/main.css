@@ -1,0 +1,95 @@
+@import url(https://fonts.googleapis.com/css?family=Libre+Baskerville);
+a {
+  cursor: pointer; }
+
+.main {
+  height: 360px;
+  width: 360px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0); }
+
+#transform-container {
+  perspective: 12000px;
+  margin-top: 250px;
+  margin-bottom: 600px; }
+
+.clickableContainer {
+  height: 100%;
+  width: 100%; }
+
+#mainTransform {
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; }
+
+.active-background {
+  margin-top: 350px !important;
+  margin-bottom: 800px !important; }
+
+.active {
+  width: 500px;
+  height: 650px; }
+
+#blog {
+  transform: rotateY(-90deg) translateZ(180px);
+  border: 1px solid black;
+  background-color: white; }
+
+#cv {
+  transform: rotateX(90deg) translateZ(180px);
+  border: 1px solid black;
+  background-color: white; }
+
+#about {
+  transform: rotateX(-90deg) translateZ(180px);
+  border: 1px solid black;
+  background-color: white; }
+
+#physics {
+  transform: rotateY(90deg) translateZ(180px);
+  border: 1px solid black;
+  background-color: white; }
+
+.active {
+  width: 500px;
+  height: 600px; }
+
+#selector {
+  transform: translateZ(180px);
+  border: 2px solid #999;
+  box-shadow: 0px 0px 3px 3px #999; }
+  #selector div:hover {
+    box-shadow: 0px 0px 1px 1px #777; }
+  #selector div {
+    height: 160px;
+    width: 160px;
+    position: relative;
+    display: inline-block;
+    margin: 9px; }
+  #selector h2 {
+    font-family: "Libre Baskerville", serif;
+    font-spacing: 4px;
+    width: 90%;
+    font-size: 95%; }
+  #selector #blog-select {
+    background-color: #FFA615; }
+  #selector #cv-select {
+    background-color: #12D8B1;
+    color: white; }
+  #selector #about-select {
+    background-color: #FF7115;
+    color: white; }
+  #selector #physics-select {
+    background-color: #2373DA; }

@@ -1,0 +1,14 @@
+.front-select-button {
+  height: 90%;
+  width: 90%; }
+
+#mainContent {
+  height: 360px;
+  width: 360px;
+  background-color: blue;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; }
