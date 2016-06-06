@@ -151,7 +151,7 @@ block content
 		
 		console.log(geometry.faces.length);
 		for (var i = 0; i<geometry.faces.length; i++) {
-			geometry.faces[i].color.setHex(ca[Math.floor(i/2)%3]);
+			geometry.faces[i].color.setHex(ca[Math.floor(i/2)]);
 		}
 		var material = new THREE.MeshBasicMaterial({ color: 0xffffff, vertexColors: THREE.FaceColors });
 		var cube = new THREE.Mesh( geometry, material );
