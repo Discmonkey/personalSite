@@ -36,12 +36,33 @@ block content
 						h4 cv
 				div.main#about
 					div#about-content
-						h4 about
+						h4 Why this site exists
+						p.
+							One of the first things I was told when I was trying to become a professional developer was that I needed a website.
+							However, I never really thought something should be brough into existence for the sake of existing. After all, potential employers can find information about me in many various locations, and my developer peers - many of whom are light years ahead in skills and knowledge will balk at the idea of visiting this lonely corner of the interweb. 
+						</p>
+
+						p.
+							Then why this site?
+						</p>
+						p.
+							Partly, I thought of an interesting concept I wanted to demonstrate with 3d transitions. Mainly, I finally gained enough knowledge where I felt comfortable playing, and needed my own playground. 
+							So this website represents my own private (but at the same time informationitely public) space. 
+							It is here that I try new ideas, and follow the things I am most passionate about namely physics, math, development and education.
+						</p>
+
+						p.
+							You, my imaginary visitor or friend will find an examples section on the other side. As I am writing this now, it is entirely empty, as you read this in the future I hope it will be populated with ideas. Ideas that may have never seen the light of day had I not created this site, and would not be fully expressed lest I write them into existence. 
+						</p>
+
+						p.
+							For as much as one downplays the worth of one's work, secretly, I think, we all hope that someone out there takes a momentary glace as they wonder by.
+						</p>
 				div.main#physics
 					div#physics-content
 						h4 physics
 	script.
-		
+
 		var removeActive = function () {
 			$('.active').removeClass('active',300);
 			$('.active-background').removeClass('.active-background',300);
@@ -126,12 +147,16 @@ block content
 
 		var geometry = new THREE.BoxGeometry( 1, 1, 1 );
 		
-		var colorArray = [0xFFA615, 0x12D8B1, 0xFF7115];
+		var ca = [0xFF7115, 0xFF7115, 0x12D8B1,0x12D8B1,0xFFA615,0xFFA615];
+		
+		console.log(geometry.faces.length);
 		for (var i = 0; i<geometry.faces.length; i++) {
-			geometry.faces[i].color.setHex(colorArray[Math.floor(i/2)%3]);
+			geometry.faces[i].color.setHex(ca[Math.floor(i/2)%3]);
 		}
 		var material = new THREE.MeshBasicMaterial({ color: 0xffffff, vertexColors: THREE.FaceColors });
 		var cube = new THREE.Mesh( geometry, material );
+		var edges = new THREE.EdgesHelper( cube, 0x2373DA );
+		scene.add(edges);
 		camera.position.z = 1.7;
 		var directionalLight = new THREE.DirectionalLight( 0xffffff, 1  );
 		directionalLight.position.set( 0, 0, 1 );
