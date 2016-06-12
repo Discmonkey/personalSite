@@ -20,9 +20,20 @@ a, .navbar-header {
 
 #about-content {
   padding: 10px;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%; }
+
+#cv-content {
+  padding: 10px;
   overflow-y: scroll;
   width: 100%;
   height: 100%; }
+  #cv-content div {
+    border-bottom: 2px solid #4F92E5; }
+  #cv-content h4 {
+    position: relative;
+    float: left; }
 
 .main {
   height: 360px;

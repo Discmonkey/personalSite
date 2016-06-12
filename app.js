@@ -9,12 +9,14 @@ var bodyParser = require('body-parser');
 var sass= require('node-sass');
 
 // db config
-// var mongo = require('mongodb');
-// var monk = require('monk');
-// var db = monk('localhost:27017/');
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var examples = require('./routes/examples');
+
 
 var app = express();
 
@@ -32,13 +34,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use(function(req,res,next) {
-//   req.db = db;
-//   next();
-// });
+app.use(function(req,res,next) {
+  req.db = db;
+  next();
+});
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/examples',examples);
 
 //render sass file
 sass.render({
@@ -50,10 +53,8 @@ sass.render({
     fs.write(fd,result.css,0,result.css.length,null,function(err,written){
       if (err) {throw err;}
       console.log('wrote css file of length '+written+' bytes');
-    })
-
-  })
-  sass = result.css;
+    });
+  });
 })
 
 // catch 404 and forward to error handler
