@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+	script(src="/javascripts/lib/angular.min.js")
+
+	div.container#create-blog
+		div(class='controller-container',ng-controller='CreatePost')
+		div.blog-entry
+
+
+
+	script(src="/javascripts/examples/createBlogPost.js")

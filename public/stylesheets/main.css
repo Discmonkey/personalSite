@@ -14,26 +14,23 @@
 a, .navbar-header {
   cursor: pointer; }
 
-.navbar-header canvas:hover {
-  width: 100px !important;
-  height: 100px !important; }
-
 #about-content {
   padding: 10px;
   overflow-y: auto;
   width: 100%;
   height: 100%; }
 
-#cv-content {
+#blog-content {
   padding: 10px;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 100%;
   height: 100%; }
-  #cv-content div {
-    border-bottom: 2px solid #4F92E5; }
-  #cv-content h4 {
-    position: relative;
-    float: left; }
+
+#physics-content {
+  padding: 10px;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%; }
 
 .main {
   height: 360px;
@@ -65,15 +62,12 @@ a, .navbar-header {
   top: 0;
   left: 0;
   bottom: 0;
-  right: 0; }
+  right: 0;
+  transform: translateZ(-180px); }
 
 .active-background {
   margin-top: 350px !important;
   margin-bottom: 800px !important; }
-
-.active {
-  width: 500px;
-  height: 650px; }
 
 #blog {
   transform: rotateY(-90deg) translateZ(180px);
@@ -96,7 +90,7 @@ a, .navbar-header {
   background-color: white; }
 
 .active {
-  width: 500px;
+  width: 600px;
   height: 600px; }
 
 #selector {
@@ -114,7 +108,10 @@ a, .navbar-header {
   #selector h2 {
     font-family: "Libre Baskerville", serif;
     font-spacing: 4px;
-    width: 90%;
+    width: 100%;
+    font-size: 95%; }
+  #selector p {
+    display: inline;
     font-size: 95%; }
   #selector #blog-select {
     background-color: #FFA615; }
@@ -126,3 +123,27 @@ a, .navbar-header {
     color: white; }
   #selector #physics-select {
     background-color: #2373DA; }
+
+#cv-content {
+  padding: 10px;
+  overflow-y: auto;
+  height: 100%; }
+  #cv-content div#cv-header {
+    background-image: url("/images/indexImages/header.jpg");
+    width: 100%;
+    height: 230px;
+    padding: 5px;
+    margin-right: 10px;
+    overflow-y: auto; }
+    #cv-content div#cv-header h3 {
+      position: relative;
+      float: left;
+      margin: 3px;
+      padding: 2px;
+      color: #FF7115;
+      border-bottom: 1px solid #FF7115; }
+  #cv-content div.section h4 {
+    position: relative;
+    float: left;
+    padding: 6px;
+    margin-right: 5px; }

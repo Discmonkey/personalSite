@@ -9,9 +9,9 @@ var bodyParser = require('body-parser');
 var sass= require('node-sass');
 
 // db config
-var mongo = require('mongodb');
+
 var monk = require('monk');
-var db = monk('localhost:27017');
+var db = monk('localhost:27017/exampleTest');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
