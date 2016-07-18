@@ -4,9 +4,54 @@ block content
 	script(src="/javascripts/lib/angular.min.js")
 
 	div.container#create-blog
-		div(class='controller-container',ng-controller='CreatePost')
-		div.blog-entry
+		div(class='controller-container',ng-controller='BlogPost')
+			div.row
+				div.col-md-2
+					btn.btn.btn-default(ng-click="fetchEntries()") Fetch Entries
+				div.col-md-4
+					select.form-control(ng-model='pastEntry')
+						option(ng-repeat='entry in allEntries track by $index', value='{{$index}}') {{entry.title}}
+				div.col-md-3
+					btn.btn.form-control.btn-primary(ng-click='switchEntry()') Edit
+				div.col-md-3
+					btn.form-control.btn.btn-danger(ng-click='deleteEntry()') Delete
+			div.row
+				div#new-blog.col-md-6(ng-model='currentEntry')
+					div#title-div
+						h3 {{title}}
+					div(ng-repeat="par in paragraphs track by $index" class="{{paragraphs[$index].parStyle}}") {{paragraphs[$index].par}}
+						<br>
+						span(ng-click='selectParagraph($index)') 
+							btn.btn.btn-success(ng-click='selectParagraph($index)') edit
 
-
-
+				div.col-md-6
+					div#right-create-blog
+						div.row(ng-show="showTitle")
+							div#title-div
+								label Title
+								input#title-input(type='text',ng-model='title')
+								button.btn.btn-success(ng-click="submitTitle()") Blog Title / Create
+						div.row
+							div#blog-appender
+								textarea(ng-model="par")
+						div.row
+							div#type-selector
+								select(ng-model='parStyle').form-control
+									option par
+									option code-js
+									option code-css
+									option code-python
+						div.row(ng-show='isSubmit')
+							button.btn.btn-success.form-control(
+								ng-click='submitParagraph()') Submit
+						div.row(ng-show='!isSubmit')
+							div.col-md-4
+								button.btn.btn-danger.form-control(
+								ng-click='deleteParagraph()') Delete
+							div.col-md-4
+								button.btn.btn-success.form-control(
+								ng-click='editParagraph()') Edit 
+							div.col-md-4
+								butn.btn.btn-default.form-control(
+								ng-click='resetPargraph()') Reset
 	script(src="/javascripts/examples/createBlogPost.js")

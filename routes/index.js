@@ -3,7 +3,18 @@ var router = express.Router();
 // select random from mongodb
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: "Max's Website"});
+	var db = req.db;
+	var entries = db.get('entries');
+	var random = Math.random();
+	entries.findOne({'randKey':{'$gt': random}}).on('success', function(doc) {
+		if ( doc ) {
+			res.render('index', { title: "Max's Website", entry: doc});
+		} else {
+			entries.findOne({'randKey':{'$lt': random}}).on('success', function(doc) {
+				res.render('index', { title: "Max's Website", entry: doc});
+			});
+		}
+	});	
 });
 
 module.exports = router;

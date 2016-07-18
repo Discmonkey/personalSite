@@ -207,6 +207,61 @@ a, .navbar-header {
 	}
 }
 
-create-blog {
+#create-blog {
 	
+	.row {
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+
+	#title-input {
+		margin-left: 10px;
+		margin-right:10px;
+	}
+
+	#create-header {
+
+	}
+	#new-blog {
+		height: 600px;
+		overflow-y: auto;
+		border: 2px solid #525FE5;
+	}
+
+	#blog-appender {
+		height: 300px;
+		overflow-y:auto;
+		textarea {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	#right-create-blog {
+		padding-left: 30px;
+	}
+
+	#title {
+
+	}
+
+	.par {
+		color: blue;
+	}
+
+	.code-js {
+		color: red;
+	}
+
+	.code-css {
+		color: green;
+	}
+
+	.code-python {
+		color: orange;
+	}
 }
+
+
+
+
+

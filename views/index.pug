@@ -29,12 +29,12 @@ block content
 					div#about-select.text-center
 						h2 About
 					div#physics-select.text-center
-						h2 Physics
+						h2 Contact
 				div.main#blog
 					div#blog-content
-						h4= entry.content.title
-						each par, key in entry.content.paragraphs
-							p= par
+						h4= entry.title
+						each item in entry.content
+							p(class= item.parStyle)= item.par
 				div.main#cv
 					div#cv-content
 						include ./main/cv.pug			
@@ -43,7 +43,7 @@ block content
 						include ./main/about.pug
 				div.main#physics
 					div#physics-content
-						h4 physics
+						h4 Contact
 
 	script= testScript
 	script(src="/javascripts/index.js")
