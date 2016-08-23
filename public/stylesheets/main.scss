@@ -1,51 +1,64 @@
+$main-color: #5C080F;
 $blog-color: #FFA615;
 $cv-color: #12D8B1; 
 $about-color: #FF7115;
 $physics-color: #2373DA;
+$contact-color: #D4AFE5;
 @import url(https://fonts.googleapis.com/css?family=Libre+Baskerville);
 $main-font: 'Libre Baskerville', serif;
 
-.navbar-nav {
-	#about-menu:hover {
-		color: $about-color;
-	}
-	#cv-menu:hover {
-		color: $cv-color;
-	}
-
-	#blog-menu:hover {
-		color: $blog-color;
-	}	
-
-	#physics-menu:hover {
-		color: $physics-color;
-	}
-}
-
-a, .navbar-header {
+canvas {
 	cursor: pointer;
 }
 
+#navigation {
+	border-radius: 50%;
+	border: 2px solid red;
+	box-shadow: 0px 0px 5px 5px red;
+}
+
+#navigation:hover {
+	border: 2px solid $physics-color;
+	box-shadow: 0px 0px 5px 5px $physics-color;
+}
+
+#navigation:hover.selected {
+	border: 2px solid $cv-color;
+	box-shadow: 0px 0px 5px 5px $cv-color;
+}
 
 #about-content {
-	padding: 10px;
+	padding: 20px;
 	overflow-y:auto;
 	width: 100%;
 	height: 100%;
 }
 
 #blog-content {
-	padding: 10px;
+	padding: 20px;
 	overflow-y:auto;
 	width: 100%;
 	height: 100%;
 }
 
 #physics-content {
-	padding: 10px;
+	padding: 20px;
 	overflow-y:auto;
 	width: 100%;
 	height: 100%;
+}
+
+#contact-content {
+	padding: 20px;
+	overflow-y:auto;
+	width: 100%;
+	height: 100%;
+}
+
+#navigation {
+	position: fixed;
+	left: 25px;
+	top: 25px;
 }
 
 
@@ -62,9 +75,8 @@ a, .navbar-header {
 
 #transform-container {
 	perspective: 12000px;
-	margin-top: 250px;
-	margin-bottom: 600px;
-	
+	margin-top: 350px;
+	margin-bottom: 600px;	
 }
 
 .clickableContainer {
@@ -74,7 +86,7 @@ a, .navbar-header {
 
 #mainTransform {
 	transform-style: preserve-3d;
-	transition: transform 1s;
+	transition: transform .2s;
 	margin: auto;
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
@@ -89,25 +101,31 @@ a, .navbar-header {
 
 #blog {
 	transform: rotateY(-90deg) translateZ(180px);
-	border: 1px solid $blog-color;
+	border: 5px solid $blog-color;
 	background-color:white;
 }
 
 #cv {
 	transform: rotateX(90deg) translateZ(180px);
-	border: 1px solid $cv-color;
+	border: 5px solid $cv-color;
 	background-color:white;
 }
 
 #about {
 	transform: rotateX(-90deg) translateZ(180px);
-	border: 1px solid $about-color;
+	border: 5px solid $about-color;
 	background-color:white;
 }
 
 #physics {
 	transform: rotateY(90deg) translateZ(180px);
-	border: 1px solid $physics-color;
+	border: 5px solid $physics-color;
+	background-color:white;
+}
+
+#contact {
+	transform: rotateY(180deg) translateZ(180px);
+	border: 5px solid $contact-color;
 	background-color:white;
 }
 
@@ -120,9 +138,7 @@ a, .navbar-header {
 
 #selector{
 	transform: translateZ(180px);
-	border: 2px solid #999;
-	box-shadow: 0px 0px 3px 3px #999;
-	
+	border: 3px solid $main-color;
 	div:hover {
 		box-shadow: 0px 0px 1px 1px #777;
 	}
@@ -132,7 +148,7 @@ a, .navbar-header {
 		width: 160px;
 		position: relative;
 		display: inline-block;
-		margin: 9px;
+		margin: 8px;
 	}
 
 	h2 {
@@ -208,7 +224,7 @@ a, .navbar-header {
 }
 
 #create-blog {
-	
+
 	.row {
 		margin-top: 30px;
 		margin-bottom: 30px;
@@ -258,6 +274,16 @@ a, .navbar-header {
 
 	.code-python {
 		color: orange;
+	}
+}
+
+#blog-content {
+
+	.code {
+		background-color:
+	}
+	p.c-code {
+		white-space: pre-wrap;
 	}
 }
 

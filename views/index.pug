@@ -2,22 +2,9 @@ extends layout
 
 block content
 	script(src="/javascripts/lib/three.min.js")
-	script(src="/javascripts/lib/orbit-controls.js")
-	nav.navbar.navbar-default
-		div.container-fluid
-			div.navbar-header
-			div.collapse.navbar-collapse
-				ul.nav.navbar-nav
-					li 
-						a#about-menu about 
-					li 
-						a#cv-menu cv
-					li 
-						a#blog-menu examples
-					li 
-						a#physics-menu physics
-
-
+	
+	div#navigation
+	
 	div.container.block-center
 		div#transform-container
 			div#mainTransform
@@ -31,20 +18,26 @@ block content
 					div#physics-select.text-center
 						h2 Contact
 				div.main#blog
+					div#blog-cover
 					div#blog-content
-						h4= entry.title
-						each item in entry.content
-							p(class= item.parStyle)= item.par
+						include ./main/blogEntries/entry_1.pug
 				div.main#cv
+					div#cv-cover
 					div#cv-content
 						include ./main/cv.pug			
 				div.main#about
+					div#about-cover
 					div#about-content
 						include ./main/about.pug
 				div.main#physics
+					div#physics-cover
 					div#physics-content
-						h4 Contact
+						include ./main/physics.pug
+				div.main#contact
+					div#contact-cover
+					div#contact-content
+						include ./main/contact.pug
 
 	script= testScript
 	script(src="/javascripts/index.js")
-	script(src="/javascripts/physicsExamples/axes.js")
+	

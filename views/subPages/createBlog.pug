@@ -37,10 +37,7 @@ block content
 						div.row
 							div#type-selector
 								select(ng-model='parStyle').form-control
-									option par
-									option code-js
-									option code-css
-									option code-python
+									option(ng-repeat='option in paragraphOptions') {{option}}
 						div.row(ng-show='isSubmit')
 							button.btn.btn-success.form-control(
 								ng-click='submitParagraph()') Submit

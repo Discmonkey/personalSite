@@ -1,36 +1,48 @@
 @import url(https://fonts.googleapis.com/css?family=Libre+Baskerville);
-.navbar-nav #about-menu:hover {
-  color: #FF7115; }
-
-.navbar-nav #cv-menu:hover {
-  color: #12D8B1; }
-
-.navbar-nav #blog-menu:hover {
-  color: #FFA615; }
-
-.navbar-nav #physics-menu:hover {
-  color: #2373DA; }
-
-a, .navbar-header {
+canvas {
   cursor: pointer; }
 
+#navigation {
+  border-radius: 50%;
+  border: 2px solid red;
+  box-shadow: 0px 0px 5px 5px red; }
+
+#navigation:hover {
+  border: 2px solid #2373DA;
+  box-shadow: 0px 0px 5px 5px #2373DA; }
+
+#navigation:hover.selected {
+  border: 2px solid #12D8B1;
+  box-shadow: 0px 0px 5px 5px #12D8B1; }
+
 #about-content {
-  padding: 10px;
+  padding: 20px;
   overflow-y: auto;
   width: 100%;
   height: 100%; }
 
 #blog-content {
-  padding: 10px;
+  padding: 20px;
   overflow-y: auto;
   width: 100%;
   height: 100%; }
 
 #physics-content {
-  padding: 10px;
+  padding: 20px;
   overflow-y: auto;
   width: 100%;
   height: 100%; }
+
+#contact-content {
+  padding: 20px;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%; }
+
+#navigation {
+  position: fixed;
+  left: 25px;
+  top: 25px; }
 
 .main {
   height: 360px;
@@ -47,7 +59,7 @@ a, .navbar-header {
 
 #transform-container {
   perspective: 12000px;
-  margin-top: 250px;
+  margin-top: 350px;
   margin-bottom: 600px; }
 
 .clickableContainer {
@@ -56,7 +68,7 @@ a, .navbar-header {
 
 #mainTransform {
   transform-style: preserve-3d;
-  transition: transform 1s;
+  transition: transform .2s;
   margin: auto;
   position: absolute;
   top: 0;
@@ -71,22 +83,27 @@ a, .navbar-header {
 
 #blog {
   transform: rotateY(-90deg) translateZ(180px);
-  border: 1px solid #FFA615;
+  border: 5px solid #FFA615;
   background-color: white; }
 
 #cv {
   transform: rotateX(90deg) translateZ(180px);
-  border: 1px solid #12D8B1;
+  border: 5px solid #12D8B1;
   background-color: white; }
 
 #about {
   transform: rotateX(-90deg) translateZ(180px);
-  border: 1px solid #FF7115;
+  border: 5px solid #FF7115;
   background-color: white; }
 
 #physics {
   transform: rotateY(90deg) translateZ(180px);
-  border: 1px solid #2373DA;
+  border: 5px solid #2373DA;
+  background-color: white; }
+
+#contact {
+  transform: rotateY(180deg) translateZ(180px);
+  border: 5px solid #D4AFE5;
   background-color: white; }
 
 .active {
@@ -95,8 +112,7 @@ a, .navbar-header {
 
 #selector {
   transform: translateZ(180px);
-  border: 2px solid #999;
-  box-shadow: 0px 0px 3px 3px #999; }
+  border: 3px solid #5C080F; }
   #selector div:hover {
     box-shadow: 0px 0px 1px 1px #777; }
   #selector div {
@@ -104,7 +120,7 @@ a, .navbar-header {
     width: 160px;
     position: relative;
     display: inline-block;
-    margin: 9px; }
+    margin: 8px; }
   #selector h2 {
     font-family: "Libre Baskerville", serif;
     font-spacing: 4px;
@@ -182,3 +198,6 @@ a, .navbar-header {
 
 #create-blog .code-python {
   color: orange; }
+
+#blog-content p.c-code {
+  white-space: pre-wrap; }

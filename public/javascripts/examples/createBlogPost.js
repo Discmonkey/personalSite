@@ -12,10 +12,12 @@ function BlogPost($scope,$log,$http) {
 	$scope.showTitle = true;
 	$scope.par = '';
 	$scope.currentEntry = '';
-	$scope.parStyle = '';
+	$scope.parStyle = 'par';
 	$scope.paragraphs = [];
 	$scope.isSubmit = true;
 	$scope.allEntries = [];
+	$scope.paragraphOptions = ['par', 'code-js', 'code-css', 'code-python'];
+
 	var entryNumber = 0;
 	var editIndex = -1;
 	$scope.entries = [];
@@ -55,7 +57,7 @@ function BlogPost($scope,$log,$http) {
 					});
 
 					$scope.par = '';
-					$scope.parStyle = '';
+					$scope.parStyle = 'par';
 				}
 			}).error(function(data) {
 				console.log(data);
@@ -113,7 +115,7 @@ function BlogPost($scope,$log,$http) {
 
 	$scope.reset = function() {
 		$scope.par = '';
-		$scope.parStyle = '';
+		$scope.parStyle = 'par';
 		$scope.isSubmit = true;
 	};
 
@@ -145,7 +147,7 @@ function BlogPost($scope,$log,$http) {
 				$scope.par = '';
 				$scope.currentEntry = number;
 				entryNumber = number;
-				$scope.parStyle = '';
+				$scope.parStyle = 'par';
 				$scope.paragraphs = data.content;
 				$scope.isSubmit = true;
 			});

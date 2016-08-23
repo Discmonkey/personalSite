@@ -6,7 +6,9 @@ router.get('/', function(req, res, next) {
 	var db = req.db;
 	var entries = db.get('entries');
 	var random = Math.random();
+	console.log(random);
 	entries.findOne({'randKey':{'$gt': random}}).on('success', function(doc) {
+		console.log(doc);
 		if ( doc ) {
 			res.render('index', { title: "Max's Website", entry: doc});
 		} else {
