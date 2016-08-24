@@ -1,0 +1,23 @@
+h3 Decompiling hello.c
+
+p The c programming language was my first introduction into any sort of advanced programming. I finally had to undertand memory allocation, I/O, and compiling and linking files. The latter of these if still quite mysterious to me. As a result I wanted to try to understand exactly what happens, to the simplest of files, hello.c, as it evolves from simple, human readable instructions, to seemingly bizarre symbols and keywords that get fed into the machine. 
+
+p In order to generate the files I use the standards gcc compiler bundled with devtools on OSX as follows:
+ol
+	li $ gcc -O hello.c
+	li output: hello.s
+	li $ gcc -c hello.s
+	li output: hello.o
+	li $ gcc hello.o
+	li output: a.out
+
+p The four files represent the same program, however with each step of the gcc compiler more and more useful abstractions are torn away. Where the hello.o file and the a.out file can be interpreted by the machine as a set of intructions, written entirely in binary. The .s file may be thought of as one step away from the cliff of pure binary; it lets humans communicate with the machine underneath and dive the most explicit instructions possible. 
+
+h6 .c file 
+p A simple c program:
+p.c-code.
+	#include<stdio.h>
+	int main() {
+		printf("hello");
+		return 0;
+	}

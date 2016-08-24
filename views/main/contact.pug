@@ -1,0 +1,34 @@
+h4 Contact
+<form class="form-horizontal" ng-controller='contact' id='contactForm'>
+	<fieldset>
+
+	<!-- Form Name -->
+	<h3> Contact </h3>
+	
+	<!-- Text input-->
+	<div class="form-group">
+		<label class="col-md-4 control-label" for="email">email</label>  
+		<div class="col-md-4">
+		<input id="email" name="email" type="text" placeholder="example@me.com" class="form-control input-md" required="">
+
+		</div>
+	</div>
+	
+	<!-- Textarea -->
+	<div class="form-group">
+		<label class="col-md-4 control-label" for="message">message</label>
+		<div class="col-md-4">                     
+		<textarea class="form-control" id="message" name="message" required=""></textarea>
+		</div>
+	</div>
+	
+	<!-- Button -->
+	<div class="form-group">
+		<label class="col-md-4 control-label" for="submit">submit</label>
+		<div class="col-md-4">
+		<button id="submit" type='button' name="submit" class="btn btn-default">Button</button>
+		</div>
+	</div>
+
+	</fieldset>
+</form>
