@@ -1,6 +1,6 @@
 $main-color: #5C080F;
 $blog-color: #FFA615;
-$cv-color: #12D8B1; 
+$cv-color: #12D8B1;
 $about-color: #FF7115;
 $physics-color: #2373DA;
 $contact-color: #D4AFE5;
@@ -64,7 +64,7 @@ canvas {
 
 .main {
 	height: 360px;
-	width: 360px; 
+	width: 360px;
 	margin: auto;
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
@@ -76,7 +76,7 @@ canvas {
 #transform-container {
 	perspective: 12000px;
 	margin-top: 350px;
-	margin-bottom: 600px;	
+	margin-bottom: 600px;
 }
 
 .clickableContainer {
@@ -91,7 +91,7 @@ canvas {
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
 	transform: translateZ(-180px);
-	
+
 }
 
 .active-background {
@@ -190,7 +190,7 @@ canvas {
 		padding: 5px;
 		margin-right: 10px;
 		overflow-y:auto;
-		
+
 		h3 {
 			position: relative;
 			float: left;
@@ -232,6 +232,14 @@ canvas {
 		white-space: pre-wrap;
 	}
 }
+
+
+
+
+
+
+
+
 
 
 

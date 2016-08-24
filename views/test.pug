@@ -1,0 +1,43 @@
+extends layout
+
+block content
+    script(src="/javascripts/lib/three.min.js")
+    div.container
+        div.row
+            div.col-md-3
+                div#navigation
+        div.row
+            div#transform-container
+                div#mainTransform
+                    div.main#selector
+                        div#blog-select.text-center
+                            h2 Examples
+                        div#cv-select.text-center
+                            h2 CV
+                        div#about-select.text-center
+                            h2 About
+                        div#physics-select.text-center
+                            h2 Contact
+                    div.main#blog
+                        div#blog-cover
+                        div#blog-content
+                            include ./main/blogEntries/entry_1.pug
+                    div.main#cv
+                        div#cv-cover
+                        div#cv-content
+                            include ./main/cv.pug
+                    div.main#about
+                        div#about-cover
+                        div#about-content
+                            include ./main/about.pug
+                    div.main#physics
+                        div#physics-cover
+                        div#physics-content
+                            include ./main/physics.pug
+                    div.main#contact
+                        div#contact-cover
+                        div#contact-content
+                            include ./main/contact.pug
+
+    script= testScript
+    script(src="/javascripts/index.js")
