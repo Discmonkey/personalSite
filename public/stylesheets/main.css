@@ -164,40 +164,8 @@ canvas {
     padding: 6px;
     margin-right: 5px; }
 
-#create-blog .row {
-  margin-top: 30px;
-  margin-bottom: 30px; }
-
-#create-blog #title-input {
-  margin-left: 10px;
-  margin-right: 10px; }
-
-#create-blog #new-blog {
-  height: 600px;
-  overflow-y: auto;
-  border: 2px solid #525FE5; }
-
-#create-blog #blog-appender {
-  height: 300px;
-  overflow-y: auto; }
-  #create-blog #blog-appender textarea {
-    width: 100%;
-    height: 100%; }
-
-#create-blog #right-create-blog {
-  padding-left: 30px; }
-
-#create-blog .par {
-  color: blue; }
-
-#create-blog .code-js {
-  color: red; }
-
-#create-blog .code-css {
-  color: green; }
-
-#create-blog .code-python {
-  color: orange; }
+#blog-content .code {
+  background-color: rgba(157, 157, 157, 0.63); }
 
 #blog-content p.c-code {
   white-space: pre-wrap; }
