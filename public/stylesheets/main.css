@@ -1,11 +1,32 @@
 @import url(https://fonts.googleapis.com/css?family=Libre+Baskerville);
+@import "https://fonts.googleapis.com/css?family=Lora";
 canvas {
   cursor: pointer; }
 
+/* border classes */
+#header-divider {
+  border-bottom: 1px dashed #69d425; }
+
+.left-border {
+  border-left: 1px dashed #69d425; }
+
+.right-border {
+  border-right: 1px dashed #69d425; }
+
+/* border classes end */
 #navigation {
   border-radius: 50%;
   border: 2px solid red;
-  box-shadow: 0px 0px 5px 5px red; }
+  box-shadow: 0px 0px 5px 5px red;
+  height: 120px;
+  width: 120px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  margin-left: 25px; }
+
+/* spacer classes start */
+.no-left-margin {
+  padding-left: 0px !important; }
 
 #navigation:hover {
   border: 2px solid #2373DA;
@@ -14,35 +35,6 @@ canvas {
 #navigation:hover.selected {
   border: 2px solid #12D8B1;
   box-shadow: 0px 0px 5px 5px #12D8B1; }
-
-#about-content {
-  padding: 20px;
-  overflow-y: auto;
-  width: 100%;
-  height: 100%; }
-
-#blog-content {
-  padding: 20px;
-  overflow-y: auto;
-  width: 100%;
-  height: 100%; }
-
-#physics-content {
-  padding: 20px;
-  overflow-y: auto;
-  width: 100%;
-  height: 100%; }
-
-#contact-content {
-  padding: 20px;
-  overflow-y: auto;
-  width: 100%;
-  height: 100%; }
-
-#navigation {
-  position: fixed;
-  left: 25px;
-  top: 25px; }
 
 .main {
   height: 360px;
@@ -59,8 +51,11 @@ canvas {
 
 #transform-container {
   perspective: 12000px;
-  margin-top: 350px;
-  margin-bottom: 600px; }
+  height: 800px;
+  margin: -70px 0 150px 0; }
+
+#transform-container.no-margin {
+  margin: 0px !important; }
 
 .clickableContainer {
   height: 100%;
@@ -78,8 +73,7 @@ canvas {
   transform: translateZ(-180px); }
 
 .active-background {
-  margin-top: 350px !important;
-  margin-bottom: 800px !important; }
+  margin: 0 !important; }
 
 #blog {
   transform: rotateY(-90deg) translateZ(180px);
@@ -107,12 +101,12 @@ canvas {
   background-color: white; }
 
 .active {
-  width: 600px;
-  height: 600px; }
+  width: 100%;
+  height: 100%; }
 
 #selector {
   transform: translateZ(180px);
-  border: 3px solid #5C080F; }
+  border: 3px solid #69d425; }
   #selector div:hover {
     box-shadow: 0px 0px 1px 1px #777; }
   #selector div {
@@ -141,32 +135,61 @@ canvas {
     background-color: #2373DA; }
 
 #cv-content {
-  padding: 10px;
+  padding: 40px;
   overflow-y: auto;
   height: 100%; }
   #cv-content div#cv-header {
     background-image: url("/images/indexImages/header.jpg");
+    background-size: 100%;
     width: 100%;
-    height: 230px;
-    padding: 5px;
-    margin-right: 10px;
-    overflow-y: auto; }
+    height: 30%; }
     #cv-content div#cv-header h3 {
+      font-family: "Lora", serif;
+      font-weight: bold;
+      letter-spacing: 3px;
       position: relative;
       float: left;
       margin: 3px;
       padding: 2px;
       color: #FF7115;
       border-bottom: 1px solid #FF7115; }
-  #cv-content div.section h4 {
-    position: relative;
-    float: left;
-    padding: 6px;
-    margin-right: 5px; }
+  #cv-content div.section {
+    padding: 40px; }
+    #cv-content div.section h4 {
+      font-family: "Lora", serif;
+      font-weight: bold;
+      letter-spacing: 3px;
+      position: relative;
+      float: left;
+      padding: 6px;
+      margin-right: 5px; }
 
-#blog-content .code {
-  background-color: rgba(157, 157, 157, 0.63); }
-#blog-content p.c-code {
-  white-space: pre-wrap; }
+#about-content {
+  padding: 40px;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%; }
+
+#physics-content {
+  padding: 40px;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%; }
+
+#contact-content {
+  padding: 40px;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%; }
+
+#blog-content {
+  padding: 40px;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%; }
+  #blog-content .code {
+    background-color: rgba(157, 157, 157, 0.63); }
+  #blog-content p.c-code {
+    white-space: pre-wrap; }
 
 /*# sourceMappingURL=main.css.map */

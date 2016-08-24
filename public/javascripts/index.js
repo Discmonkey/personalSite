@@ -1,38 +1,79 @@
-var removeActive = function () {
-	$('active').removeClass('active',300);
-	$('.active-background').removeClass('.active-background',300);	
+var addActive = function () {
+	$('.left-border').addClass('no-left-margin',300);
+	$('.active-background').addClass('.active-background',300);
+    $('#transform-container').addClass('no-margin');
+};
+
+var removeActive = function() {
+    $('.active').removeClass('active',300);
+    $('.active-background').removeClass('active-background',300);
+    $('.left-border').removeClass('.no-left-margin');
+    $('#transform-container').removeClass('no-margin');
+}
+
+var changeBorderColor = function(section) {
+    var color = '';
+    switch(section) {
+        case 'blog':
+            color = '#FFA615';
+            break;
+        case 'cv':
+            color = '#12D8B1';
+            break;
+        case 'about':
+            color = '#FF7115';
+            break;
+        case 'physics':
+            color = '#2373DA';
+            break;
+        case 'contact':
+            color = '#D4AFE5';
+            break;
+        case 'middle':
+            color = '#69d425';
+            break
+    }
+    $('#header-divider, .left-border, .right-border').animate({
+        borderColor: color
+    },700);
 };
 
 var selectSide = function(id) {
 	var rotate = 'translateZ(-180px) rotate';
-	$('.active').removeClass('active',300);
 	var resizeID = '#';
-	switch(id.split('-')[0]) {
+    var section = id.split('-')[0];
+	switch(section) {
 		case 'blog':
 			rotate += 'Y(90deg)';
 			resizeID +='blog';
+			addActive();
 			break;
 		case 'cv':
 			rotate += 'X(-90deg)';
 			resizeID +='cv';
+			addActive();
 			break;
 		case 'about':
 			rotate += 'X(90deg)';
 			resizeID +='about';
+			addActive();
 			break;
 		case 'physics':
 			rotate += 'Y(-90deg)';
 			resizeID +='physics';
+			addActive();
 			break;
 		case 'contact':
 			rotate += 'Y(-180deg)';
 			resizeID += 'contact';
+			addActive();
 			break;
 		case 'middle':
 			rotate += 'Y(0deg)';
 	}
+
+	changeBorderColor(section);
 	$('#mainTransform').css('transform',rotate);
-	$('#transform-container').addClass('active-background',700);
 	$(resizeID).addClass('active',700);
 };
 
@@ -52,8 +93,8 @@ var spinSmall = true,
 	control = false;
 
 var scene = new THREE.Scene();
-var height = 100, 
-	width = 100;
+var height = $('#navigation').height(),
+	width = $('#navigation').width();
 var camera = new THREE.PerspectiveCamera(75, width/height,0.1,1000);
 var renderer = new THREE.WebGLRenderer({alpha: true});
 renderer.setSize(width, height);
@@ -63,7 +104,7 @@ var geometry = new THREE.BoxGeometry( 1, 1, 1 );
 
 var ca = [0x2373DA, 0x2373DA, 0xFFA615, 0xFFA615,
 0x12D8B1, 0x12D8B1, 0xFF7115,0xFF7115,
-0x5C080F, 0x5C080F, 0xD4AFE5, 0xD4AFE5]
+0x69d425, 0x69d425, 0xD4AFE5, 0xD4AFE5]
 
 for (var i = 0; i<geometry.faces.length; i++) {
 	geometry.faces[i].color.setHex(ca[i]);
@@ -95,8 +136,8 @@ $('canvas').mousemove(function(event){
 
 function render() {
 	if (spinSmall) {
-		cube.rotation.x += 0.01
-		cube.rotation.y += 0.01
+		cube.rotation.x += 0.01;
+		cube.rotation.y += 0.01;
 	} 
 	
 	if (control) {
@@ -121,55 +162,47 @@ function render() {
 render();
 
 var findClosestSide = function(x, y) {
-	x = x%(2*Math.PI) / Math.PI;
-	y = y%(2*Math.PI) / Math.PI;
+	x = (x%(2*Math.PI) / Math.PI).toFixed(2);
+	y = (y%(2*Math.PI) / Math.PI).toFixed(2);
+    x = x < 0 ? parseFloat(x) + 2 : x;
+    y = y < 0 ? parseFloat(y) + 2 : y;
 
-	if ( Math.abs(.5 + x) < .25 ){
-		return 'cv';
-	} 
 
-	if ( Math.abs(1.5 + x) < .25 ) {
-		return 'about';
-	}
+    console.log(x,y);
 
-	if ( x < -.75) {
-		if (Math.abs(y - 1.5) < .25) {
-			return 'blog';
-		}
+    if ( x > 1.25 && x < 1.75) {
+        return 'cv';
+    }
 
-		if (Math.abs(y - .5) < .25) {
-			return 'physics';
-		}
+    if (x > .25 && x < .75) {
+        return 'about';
+    }
 
-		if (y > 1.75 || y < .25) {
-			return 'contact';
-		}
+    if (x >=.75 && x <= 1.25) {
+        x = false;
+    }
 
-		return 'middle';
-	}
+    if (y >= .25 && y < .75) {
+        return x ? 'blog' : 'physics';
+    }
 
-	if (Math.abs(y - 1.5) < .25) {
-		return 'physics';
-	}
+    if (y >= .75 && y < 1.25 ) {
+        return x ? 'contact' : 'middle';
+    }
 
-	if (Math.abs(y - .5) < .25) {
-		return 'blog';
-	}
+    if (y >= 1.25 && y < 1.75) {
+        return x ? 'physics': 'blog';
+    }
 
-	if (y > 1.75 || y < .25) {
-		return 'middle';
-	}
-
-	return 'contact';
-
+    return x ? 'middle': 'contact';
 }
 
 $('canvas').mousedown(function(){
 	spinSmall = false;
 	control = true;
 	spinBig = false;
-	$('.active').removeClass('active',300);
-	$('#navigation').addClass('selected');
+	removeActive();
+	$('#navigation').addClass('selected',300);
 }).mouseout(function(){
 	control = false;
 	if (!spinSmall) {
@@ -182,4 +215,3 @@ $('canvas').mousedown(function(){
 	$('#navigation').removeClass('selected');
 });
 
-//testing grid
