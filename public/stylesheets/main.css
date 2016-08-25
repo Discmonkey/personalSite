@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Libre+Baskerville);
-@import "https://fonts.googleapis.com/css?family=Lora";
+@import url(https://fonts.googleapis.com/css?family=Lora);
 canvas {
   cursor: pointer; }
 
@@ -191,5 +191,41 @@ canvas {
     background-color: rgba(157, 157, 157, 0.63); }
   #blog-content p.c-code {
     white-space: pre-wrap; }
+
+#main-header div.header-container {
+  margin-left: 100px;
+  margin-top: 45px;
+  font-family: "Lora", serif; }
+  #main-header div.header-container h1 {
+    letter-spacing: 5px;
+    font-weight: bold; }
+  #main-header div.header-container .row {
+    font-size: larger;
+    font-spacing: 2px;
+    font-weight: bold; }
+    #main-header div.header-container .row span {
+      cursor: pointer;
+      padding: 3px;
+      border-radius: 2px; }
+    #main-header div.header-container .row #blog-h {
+      color: #FFA615; }
+      #main-header div.header-container .row #blog-h:hover {
+        box-shadow: 0px 4px 2px -2px #FFA615; }
+    #main-header div.header-container .row #cv-h {
+      color: #12D8B1; }
+      #main-header div.header-container .row #cv-h:hover {
+        box-shadow: 0px 4px 2px -2px #12D8B1; }
+    #main-header div.header-container .row #about-h {
+      color: #FF7115; }
+      #main-header div.header-container .row #about-h:hover {
+        box-shadow: 0px 4px 2px -2px #FF7115; }
+    #main-header div.header-container .row #physics-h {
+      color: #2373DA; }
+      #main-header div.header-container .row #physics-h:hover {
+        box-shadow: 0px 4px 2px -2px #2373DA; }
+    #main-header div.header-container .row #contact-h {
+      color: #D4AFE5; }
+      #main-header div.header-container .row #contact-h:hover {
+        box-shadow: 0px 4px 2px -2px #D4AFE5; }
 
 /*# sourceMappingURL=main.css.map */

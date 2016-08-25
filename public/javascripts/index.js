@@ -36,6 +36,10 @@ var changeBorderColor = function(section) {
     $('#header-divider, .left-border, .right-border').animate({
         borderColor: color
     },700);
+
+    $('.header-container h1').animate({
+        color: color
+    },700);
 };
 
 var selectSide = function(id) {
@@ -76,21 +80,22 @@ var selectSide = function(id) {
 	$('#mainTransform').css('transform',rotate);
 	$(resizeID).addClass('active',700);
 };
-
+var spinSmall = true,
+    spinBig = true;
+    control = false;
 $('#selector div').click(function(){
+    spinBig= false;
 	var id = $(this)[0].id;
 	selectSide(id);
 });
 
-$('.nav li a').click(function(){
+$('.header-container span').click(function(){
+    spinBig = false;
 	var id = $(this)[0].id;
 	selectSide(id);
 });
 
 //starting three.js script
-var spinSmall = true,
-	spinBig = true;
-	control = false;
 
 var scene = new THREE.Scene();
 var height = $('#navigation').height(),

@@ -5,7 +5,7 @@ $about-color: #FF7115;
 $physics-color: #2373DA;
 $contact-color: #D4AFE5;
 @import url(https://fonts.googleapis.com/css?family=Libre+Baskerville);
-@import 'https://fonts.googleapis.com/css?family=Lora';
+@import url(https://fonts.googleapis.com/css?family=Lora);
 $main-font: 'Libre Baskerville', serif;
 $cv-font: 'Lora', serif;
 canvas {
@@ -251,6 +251,60 @@ canvas {
 	}
 	p.c-code {
 		white-space: pre-wrap;
+	}
+}
+
+#main-header {
+	div.header-container {
+		margin-left: 100px;
+		margin-top: 45px;
+		font-family: $cv-font;
+		h1 {
+			letter-spacing: 5px;
+			font-weight: bold;
+		}
+
+		.row {
+			font-size: larger;
+			font-spacing: 2px;
+			font-weight: bold;
+			span {
+				cursor: pointer;
+				padding: 3px;
+				border-radius: 2px;
+			}
+			#blog-h {
+				color: $blog-color;
+				&:hover {
+					box-shadow: 0px 4px 2px -2px $blog-color;
+				}
+			}
+			#cv-h {
+				color: $cv-color;
+				&:hover {
+					box-shadow: 0px 4px 2px -2px $cv-color;
+				}
+			}
+			#about-h {
+				color: $about-color;
+				&:hover {
+					box-shadow: 0px 4px 2px -2px $about-color;
+				}
+			}
+			#physics-h {
+				color: $physics-color;
+				&:hover {
+					box-shadow: 0px 4px 2px -2px $physics-color;
+				}
+			}
+			#contact-h {
+				color: $contact-color;
+				&:hover {
+					box-shadow: 0px 4px 2px -2px $contact-color;
+				}
+			}
+		}
+
 	}
 }
 
