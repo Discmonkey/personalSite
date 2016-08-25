@@ -83,16 +83,14 @@ var selectSide = function(id) {
 var spinSmall = true,
     spinBig = true;
     control = false;
-$('#selector div').click(function(){
-    spinBig= false;
-	var id = $(this)[0].id;
-	selectSide(id);
-});
 
-$('.header-container span').click(function(){
-    spinBig = false;
+$('#selector div, .header-container span').click(function(){
+    removeActive();
+    spinBig= false;
+    $('#mainTransform').css('transition', 'transform 1s');
 	var id = $(this)[0].id;
 	selectSide(id);
+    $('#mainTransform').css('transition','transform .2s');
 });
 
 //starting three.js script
