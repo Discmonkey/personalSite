@@ -4,20 +4,58 @@ p The c programming language was my first introduction into any sort of advanced
 
 p In order to generate the files I use the standards gcc compiler bundled with devtools on OSX as follows:
 ol
-	li $ gcc -O hello.c
-	li output: hello.s
-	li $ gcc -c hello.s
-	li output: hello.o
-	li $ gcc hello.o
-	li output: a.out
+    li $ gcc -O hello.c
+    li output: hello.s
+    li $ gcc -c hello.s
+    li output: hello.o
+    li $ gcc hello.o
+    li output: a.out
 
 p The four files represent the same program, however with each step of the gcc compiler more and more useful abstractions are torn away. Where the hello.o file and the a.out file can be interpreted by the machine as a set of intructions, written entirely in binary. The .s file may be thought of as one step away from the cliff of pure binary; it lets humans communicate with the machine underneath and dive the most explicit instructions possible. 
 
-h6 .c file 
-p A simple c program:
-p.c-code.
-	#include<stdio.h>
-	int main() {
-		printf("hello");
-		return 0;
-	}
+h6 .c file
+p.code.c-code.
+    #include<stdio.h>
+    int main() {
+        printf("hello");
+        return 0;
+    }
+p This program prints the string hello to the screen. In order to do so it calls on a function defined in the c I/O library, printf. It then returns 0 upon successful completion. When we compile this file into the special brand of assembly language which comes bundled with the OSX we acquire the following file:
+
+h6 .s file
+p.code.a-code.
+            .section	__TEXT,__text,regular,pure_instructions
+            .macosx_version_min 10, 11
+            .globl	_main
+            .align	4, 0x90
+p.code.a-code.
+    _main:
+        .cfi_startproc
+        pushq    %rbp
+    Ltmp0:
+        .cfi_def_cfa_offset 16
+    Ltmp1:
+        .cfi_offset %rbp, -16
+        movq    %rsp, %rbp
+    Ltmp2:
+        .cfi_def_cfa_register %rbp
+        subq    $16, %rsp
+        leaq    L_.str(%rip), %rdi
+        movl    $0, -4(%rbp)
+        movb    $0, %al
+        callq    _printf
+        xorl    %ecx, %ecx
+        movl    %eax, -8(%rbp)
+        movl    %ecx, %eax
+        addq    $16, %rsp
+        popq    %rbp
+        retq
+        .cfi_endproc
+
+        .section    __TEXT,__cstring,cstring_literals
+    L_.str:
+        .asciz    "hello\n"
+
+
+
+.subsections_via_symbols

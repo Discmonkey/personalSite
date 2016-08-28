@@ -1,4 +1,4 @@
-$main-color: #69d425;
+$main-color: #00ff37;
 $blog-color: #FFA615;
 $cv-color: #12D8B1;
 $about-color: #FF7115;
@@ -8,52 +8,19 @@ $contact-color: #D4AFE5;
 @import url(https://fonts.googleapis.com/css?family=Lora);
 $main-font: 'Libre Baskerville', serif;
 $cv-font: 'Lora', serif;
-canvas {
-	cursor: pointer;
-}
 
-/* border classes */
 
-#header-divider {
-	border-bottom: 1px dashed $main-color;
-}
 
 .left-border {
 	border-left: 1px dashed $main-color;
 }
 
-.right-border {
-	border-right: 1px dashed $main-color;
-}
-
-/* border classes end */
-
-
-#navigation {
-	border-radius: 50%;
-	border: 2px solid red;
-	box-shadow: 0px 0px 5px 5px red;
-	height: 120px;
-	width: 120px;
-	margin-top: 30px;
-	margin-bottom: 40px;
-	margin-left: 25px;
-}
-
 /* spacer classes start */
 .no-left-margin {
 	padding-left: 0px !important;
+	padding-right: 0px !important;
 }
 
-#navigation:hover {
-	border: 2px solid $physics-color;
-	box-shadow: 0px 0px 5px 5px $physics-color;
-}
-
-#navigation:hover.selected {
-	border: 2px solid $cv-color;
-	box-shadow: 0px 0px 5px 5px $cv-color;
-}
 
 .main {
 	height: 360px;
@@ -181,6 +148,7 @@ canvas {
 	height: 100%;
 	div#cv-header {
 		background-image: url('/images/indexImages/header.jpg');
+		broder: 2px solid $cv-color;
 		background-size: 100%;
 		width: 100%;
 		height: 30%;
@@ -247,64 +215,173 @@ canvas {
 	width: 100%;
 	height: 100%;
 	.code {
-		background-color: rgba(157, 157, 157, 0.63);
+		padding: 10px;
+		white-space: pre-wrap;
+		border: 1px solid $physics-color;
+		box-shadow: 0px 0px 5px 5px $physics-color;
 	}
 	p.c-code {
-		white-space: pre-wrap;
 	}
 }
 
-#main-header {
-	div.header-container {
-		margin-left: 100px;
-		margin-top: 45px;
-		font-family: $cv-font;
-		h1 {
-			letter-spacing: 5px;
-			font-weight: bold;
+
+
+.cover {
+	position: absolute;
+	width: 350px;
+	height: 350px;
+	z-index: 30;
+
+	span {
+		font-size: 50px;
+		width: 25px;
+		height: 25px;
+		margin: auto;
+		position: absolute;
+		top: 0; left: 0; bottom: 0; right: 0;
+	}
+
+	&#cv-cover{
+		background-color: $cv-color;
+	}
+
+	&#about-cover{
+		background-color: $about-color;
+	}
+
+	&#blog-cover{
+		background-color: $blog-color;
+	}
+
+	&#contact-cover{
+		background-color: $contact-color;
+	}
+
+	&#physics-cover{
+		background-color: $physics-color;
+	}
+}
+
+/* border classes end */
+
+
+#header-divider {
+	border-bottom: 1px dashed $main-color;
+	z-index: 10;
+
+	.right-border {
+		border-right: 1px dashed $main-color;
+		z-index: 20;
+	}
+
+	#main-header {
+		z-index: 10;
+
+		div.header-container {
+			margin-left: 50px;
+			margin-top: 45px;
+			font-family: $cv-font;
+			h1 {
+				letter-spacing: 5px;
+				font-weight: bold;
+			}
+			.row {
+				font-size: larger;
+				font-spacing: 2px;
+				font-weight: bold;
+				span {
+					cursor: pointer;
+					padding: 3px;
+					border-radius: 2px;
+					span {
+						padding: 4px;
+					}
+				}
+				#blog-h {
+					color: $blog-color;
+					&:hover {
+						box-shadow: 0px 4px 2px -2px $blog-color;
+					}
+				}
+				#cv-h {
+					color: $cv-color;
+					&:hover {
+						box-shadow: 0px 4px 2px -2px $cv-color;
+					}
+				}
+				#about-h {
+					color: $about-color;
+					&:hover {
+						box-shadow: 0px 4px 2px -2px $about-color;
+					}
+				}
+				#physics-h {
+					color: $physics-color;
+					&:hover {
+						box-shadow: 0px 4px 2px -2px $physics-color;
+					}
+				}
+				#contact-h {
+					color: $contact-color;
+					&:hover {
+						box-shadow: 0px 4px 2px -2px $contact-color;
+					}
+				}
+			}
+		}
+	}
+
+	#navigation {
+		border-radius: 50%;
+		border: 2px solid red;
+		box-shadow: 0px 0px 5px 5px red;
+		height: 120px;
+		width: 120px;
+		margin-top: 30px;
+		margin-bottom: 40px;
+		margin-left: 25px;
+
+		&:hover {
+			border: 2px solid $physics-color;
+			box-shadow: 0px 0px 5px 5px $physics-color;
 		}
 
-		.row {
-			font-size: larger;
-			font-spacing: 2px;
-			font-weight: bold;
-			span {
-				cursor: pointer;
-				padding: 3px;
-				border-radius: 2px;
-			}
-			#blog-h {
-				color: $blog-color;
-				&:hover {
-					box-shadow: 0px 4px 2px -2px $blog-color;
-				}
-			}
-			#cv-h {
-				color: $cv-color;
-				&:hover {
-					box-shadow: 0px 4px 2px -2px $cv-color;
-				}
-			}
-			#about-h {
-				color: $about-color;
-				&:hover {
-					box-shadow: 0px 4px 2px -2px $about-color;
-				}
-			}
-			#physics-h {
-				color: $physics-color;
-				&:hover {
-					box-shadow: 0px 4px 2px -2px $physics-color;
-				}
-			}
-			#contact-h {
-				color: $contact-color;
-				&:hover {
-					box-shadow: 0px 4px 2px -2px $contact-color;
-				}
-			}
+		&:hover.selected {
+			border: 2px solid $cv-color;
+			box-shadow: 0px 0px 5px 5px $cv-color;
 		}
 
+		canvas {
+			cursor: pointer;
+		}
+	}
+
+	@media screen and (max-width: 1201px) {
+		.right-border {
+			border-right: 0px;
+		}
+
+		.glyphicon {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: 992px) {
+
+	}
+
+	@media screen and (max-width: 710px) {
+		#navigation {
+			display: none;
+		}
+
+		#main-header {
+			width: 100%;
+		}
+
+		#header-divider {
+			width: 0px;
+		}
 	}
 }
 

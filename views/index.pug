@@ -1,47 +1,52 @@
 extends layout
 
 block content
-	script(src="/javascripts/lib/three.min.js")
-	div.container
-		div.row#header-divider
-			div.col-md-2.right-border
-				div#navigation
-			div.col-md-10#main-header
-				include ./main/header.pug
-		div.row
-			div.col-md-2
-			div.col-md-8.left-border
-				div#transform-container
-					div#mainTransform
-						div.main#selector
-							div#blog-select.text-center
-								h2 Examples
-							div#cv-select.text-center
-								h2 CV
-							div#about-select.text-center
-								h2 About
-							div#physics-select.text-center
-								h2 Contact
-						div.main#blog
-							div#blog-cover
-							div#blog-content
-								include ./main/blogEntries/entry_1.pug
-						div.main#cv
-							div#cv-cover
-							div#cv-content
-								include ./main/cv.pug
-						div.main#about
-							div#about-cover
-							div#about-content
-								include ./main/about.pug
-						div.main#physics
-							div#physics-cover
-							div#physics-content
-								include ./main/physics.pug
-						div.main#contact
-							div#contact-cover
-							div#contact-content
-								include ./main/contact.pug
+    script(src="/javascripts/lib/three.min.js")
+    div.container
+        div.row#header-divider
+            div.col-xs-2.right-border
+                div#navigation
+            div.col-xs-10#main-header
+                include ./main/header.pug
+        div.row
+            div.col-md-2
+            div.col-md-8.left-border
+                div#transform-container
+                    div#mainTransform
+                        div.main#selector
+                            div#blog-select.text-center
+                                h2 Examples
+                            div#cv-select.text-center
+                                h2 CV
+                            div#about-select.text-center
+                                h2 About
+                            div#physics-select.text-center
+                                h2 Contact
+                        div.main#blog
+                            div#blog-cover.cover
+                                span.glyphicon.glyphicon-comment
+                            div#blog-content
+                                include ./main/blogEntries/entry_1.pug
+                        div.main#cv
+                            div#cv-cover.cover
+                                span.glyphicon.glyphicon-cutlery
+                            div#cv-content
+                                include ./main/cv.pug
+                        div.main#about
+                            div#about-cover.cover
+                                span.glyphicon.glyphicon-hourglass
+                            div#about-content
+                                include ./main/about.pug
+                        div.main#physics
+                            div#physics-cover.cover
+                                span.glyphicon.glyphicon-magnet
+                            div#physics-content
+                                include ./main/physics.pug
+                        div.main#contact
+                            div#contact-cover.cover
+                                span.glyphicon.glyphicon-phone-alt
+                            div#contact-content
+                                include ./main/contact.pug
 
-	script= testScript
-	script(src="/javascripts/index.js")
+    script= testScript
+    script(src="/javascripts/index.js")

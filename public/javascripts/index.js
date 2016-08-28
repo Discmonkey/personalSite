@@ -11,72 +11,62 @@ var removeActive = function() {
     $('#transform-container').removeClass('no-margin');
 }
 
-var changeBorderColor = function(section) {
-    var color = '';
-    switch(section) {
-        case 'blog':
-            color = '#FFA615';
-            break;
-        case 'cv':
-            color = '#12D8B1';
-            break;
-        case 'about':
-            color = '#FF7115';
-            break;
-        case 'physics':
-            color = '#2373DA';
-            break;
-        case 'contact':
-            color = '#D4AFE5';
-            break;
-        case 'middle':
-            color = '#69d425';
-            break
-    }
-    $('#header-divider, .left-border, .right-border').animate({
+var changeBorderColor = function(color) {
+    $('#header-divider, .left-border, .right-border, #navigation').animate({
         borderColor: color
     },700);
 
     $('.header-container h1').animate({
         color: color
     },700);
+
+    $('#navigation').animate({
+        boxShadow: '0px 0px 5px 5px' + color
+    });
 };
 
 var selectSide = function(id) {
 	var rotate = 'translateZ(-180px) rotate';
 	var resizeID = '#';
     var section = id.split('-')[0];
+	var color =  '';
+    $('#'+section+'-cover').hide(700);
 	switch(section) {
 		case 'blog':
 			rotate += 'Y(90deg)';
 			resizeID +='blog';
+            color = '#FFA615';
 			addActive();
 			break;
 		case 'cv':
 			rotate += 'X(-90deg)';
 			resizeID +='cv';
+            color = '#12D8B1';
 			addActive();
 			break;
 		case 'about':
 			rotate += 'X(90deg)';
 			resizeID +='about';
+            color = '#FF7115';
 			addActive();
 			break;
 		case 'physics':
 			rotate += 'Y(-90deg)';
 			resizeID +='physics';
+            color = '#2373DA';
 			addActive();
 			break;
 		case 'contact':
 			rotate += 'Y(-180deg)';
 			resizeID += 'contact';
+            color = '#D4AFE5';
 			addActive();
 			break;
 		case 'middle':
+            color = '#69d425';
 			rotate += 'Y(0deg)';
 	}
-
-	changeBorderColor(section);
+	changeBorderColor(color);
 	$('#mainTransform').css('transform',rotate);
 	$(resizeID).addClass('active',700);
 };
@@ -86,6 +76,7 @@ var spinSmall = true,
 
 $('#selector div, .header-container span').click(function(){
     removeActive();
+    $('.cover:hidden').show(700);
     spinBig= false;
     $('#mainTransform').css('transition', 'transform 1s');
 	var id = $(this)[0].id;
@@ -94,20 +85,20 @@ $('#selector div, .header-container span').click(function(){
 });
 
 //starting three.js script
-
+var $nav = $('#navigation');
 var scene = new THREE.Scene();
-var height = $('#navigation').height(),
-	width = $('#navigation').width();
+var height = $nav.height(),
+	width = $nav.width();
 var camera = new THREE.PerspectiveCamera(75, width/height,0.1,1000);
 var renderer = new THREE.WebGLRenderer({alpha: true});
 renderer.setSize(width, height);
-$('#navigation').append( renderer.domElement );
+$($nav).append( renderer.domElement );
 
 var geometry = new THREE.BoxGeometry( 1, 1, 1 );
 
 var ca = [0x2373DA, 0x2373DA, 0xFFA615, 0xFFA615,
 0x12D8B1, 0x12D8B1, 0xFF7115,0xFF7115,
-0x69d425, 0x69d425, 0xD4AFE5, 0xD4AFE5]
+0x00ff37, 0x00ff37, 0xD4AFE5, 0xD4AFE5]
 
 for (var i = 0; i<geometry.faces.length; i++) {
 	geometry.faces[i].color.setHex(ca[i]);
@@ -157,7 +148,7 @@ function render() {
 		y_delta = 0;
 	}
 	
-	requestAnimationFrame( render )
+	requestAnimationFrame( render );
 	renderer.render( scene, camera );
 	frame++;
 }
@@ -169,9 +160,6 @@ var findClosestSide = function(x, y) {
 	y = (y%(2*Math.PI) / Math.PI).toFixed(2);
     x = x < 0 ? parseFloat(x) + 2 : x;
     y = y < 0 ? parseFloat(y) + 2 : y;
-
-
-    console.log(x,y);
 
     if ( x > 1.25 && x < 1.75) {
         return 'cv';
@@ -203,18 +191,22 @@ var findClosestSide = function(x, y) {
 $('canvas').mousedown(function(){
 	spinSmall = false;
 	control = true;
-	spinBig = false;
 	removeActive();
-	$('#navigation').addClass('selected',300);
+    if (spinBig) {
+        spinBig = false;
+    } else {
+        $('.cover:hidden').show(700);
+    }
+	$nav.addClass('selected',300);
 }).mouseout(function(){
 	control = false;
 	if (!spinSmall) {
 		spinSmall = true;
 		selectSide(findClosestSide(-1*cube.rotation.x,cube.rotation.y));
 	}
-	$('#navigation').removeClass('selected');
+	$nav.removeClass('selected');
 }).mouseup(function(){
 	control = false;
-	$('#navigation').removeClass('selected');
+	$nav.removeClass('selected');
 });
 
